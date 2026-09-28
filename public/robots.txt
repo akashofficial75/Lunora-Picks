@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /out/
+
+Sitemap: https://lunorapicks.com/sitemap.xml

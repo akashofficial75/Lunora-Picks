@@ -1,0 +1,6 @@
+{
+  "name": "Lunora Picks",
+  "description": "An independent collection of standout finds across tech, gaming, home decor, grooming, and everyday carry. Handpicked for quality, design, and function.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

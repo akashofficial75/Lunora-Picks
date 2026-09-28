@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lunora Picks — Handpicked Finds & Everyday Essentials</title>
+    <meta name="description" content="An independent collection of standout finds across tech, gaming, home decor, grooming, and everyday carry. Handpicked for quality, design, and function." />
+    <meta property="og:title" content="Lunora Picks — Handpicked Finds & Everyday Essentials" />
+    <meta property="og:description" content="An independent collection of standout finds across tech, gaming, home decor, grooming, and everyday carry. Handpicked for quality, design, and function." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lunora Picks" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- System theme detection & manual preference persistence -->
+    <script>
+      (function() {
+        function getResolvedTheme(e) {
+          try {
+            var stored = localStorage.getItem('lunora_theme');
+            if (stored === 'dark' || stored === 'light') {
+              return stored;
+            }
+            var mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+            var isDark = (e && typeof e.matches === 'boolean') ? e.matches : (mq ? mq.matches : true);
+            return isDark ? 'dark' : 'light';
+          } catch (err) {
+            return 'dark';
+          }
+        }
+
+        function applyTheme(theme) {
+          try {
+            var html = document.documentElement;
+            if (theme === 'dark') {
+              html.classList.add('dark');
+              html.classList.remove('light');
+              html.setAttribute('data-theme', 'dark');
+            } else {
+              html.classList.remove('dark');
+              html.classList.add('light');
+              html.setAttribute('data-theme', 'light');
+            }
+          } catch (err) {}
+        }
+
+        applyTheme(getResolvedTheme());
+
+        try {
+          if (window.matchMedia) {
+            var mql = window.matchMedia('(prefers-color-scheme: dark)');
+            var handler = function(e) {
+              if (!localStorage.getItem('lunora_theme')) {
+                applyTheme(getResolvedTheme(e));
+              }
+            };
+            if (mql.addEventListener) {
+              mql.addEventListener('change', handler);
+            } else if (mql.addListener) {
+              mql.addListener(handler);
+            }
+          }
+        } catch (err) {}
+      })();
+    </script>
+    
+    <!-- Google Fonts: Playfair Display, Cinzel, Cormorant Garamond (refined luxury serif) + Plus Jakarta Sans (clean body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Refined Gold Crescent Moon Icon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230b0c0f' stroke='%23e6ca85' stroke-width='3'/%3E%3Cpath d='M64 24 C44 26 30 42 30 62 C30 76 40 88 54 90 C34 88 20 70 20 50 C20 30 36 14 56 12 C59 12 62 13 64 24 Z' fill='%23e6ca85'/%3E%3Ccircle cx='70' cy='32' r='2' fill='%23f3e5ab'/%3E%3Ccircle cx='76' cy='46' r='1.5' fill='%23f3e5ab'/%3E%3C/svg%3E" />
+  </head>
+  <body class="antialiased selection:bg-[#e6ca85]/30 selection:text-[#f7ecc8]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
